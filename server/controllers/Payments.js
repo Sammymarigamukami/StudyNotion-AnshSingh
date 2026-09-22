@@ -148,6 +148,7 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
 			`Payment Recieved`,
 			paymentSuccessEmail(`${enrolledStudent.firstName}`, amount / 100, orderId, paymentId)
 		);
+		return res.status(200).json({ success: true, message: "Payment success email sent" });
 	} catch (error) {
 		console.log("error in sending mail", error);
 		return res.status(500).json({ success: false, message: "Could not send email" });

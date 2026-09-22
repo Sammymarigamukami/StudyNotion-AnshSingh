@@ -70,7 +70,8 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
         paymentObject.on("payment.failed", function(response) {
-            toast.error("oops, payment failed");
+            const failureReason = response?.error?.description || "Payment failed";
+            toast.error(failureReason);
             console.log(response.error);
         })
 

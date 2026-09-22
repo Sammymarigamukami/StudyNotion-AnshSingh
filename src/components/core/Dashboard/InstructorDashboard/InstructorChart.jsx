@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { Chart, ArcElement, Tooltip, Legend } from "chart.js"
+import { Chart, registerables } from "chart.js"
 import { Pie } from "react-chartjs-2"
 
-Chart.register(ArcElement, Tooltip, Legend)
+Chart.register(...registerables)
 
 export default function InstructorChart({ courses }) {
   const [currChart, setCurrChart] = useState("students")

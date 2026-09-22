@@ -55,9 +55,9 @@ function Home() {
                 </div>
 
                 {/* Video */}
-                <div className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
+                <div className="mx-3 my-7 shadow-[0_0_50px_0_rgba(96,81,155,0.25)] rounded-2xl">
                     <video
-                        className="shadow-[20px_20px_rgba(255,255,255)]"
+                        className="shadow-[12px_12px_0_0_rgba(96,81,155,0.35)] rounded-2xl border border-richblack-800"
                         muted
                         loop
                         autoPlay
@@ -92,7 +92,7 @@ function Home() {
                         }}
                         codeColor={"text-yellow-25"}
                         codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
-                        backgroundGradient={<div className="codeblock1 absolute"></div>}
+                        backgroundGradient={<div className="absolute w-[370px] h-[260px] rounded-full bg-gradient-to-br from-[#60519b] to-[#a298f4] opacity-20 blur-[80px] -left-10 -top-10 -z-10"></div>}
                     />
                 </div>
 
@@ -121,7 +121,7 @@ function Home() {
                         }}
                         codeColor={"text-white"}
                         codeblock={`import React from "react";\n import CTAButton from "./Button";\nimport TypeAnimation from "react-type";\nimport { FaArrowRight } from "react-icons/fa";\n\nconst Home = () => {\nreturn (\n<div>Home</div>\n)\n}\nexport default Home;`}
-                        backgroundGradient={<div className="codeblock2 absolute"></div>}
+                        backgroundGradient={<div className="absolute w-[370px] h-[260px] rounded-full bg-gradient-to-br from-[#bfc0d1] to-[#887bf1] opacity-20 blur-[80px] -left-10 -top-10 -z-10"></div>}
                     />
                 </div>
 

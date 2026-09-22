@@ -58,14 +58,16 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategories = async (req, res) => {
 	try {
 		console.log("INSIDE SHOW ALL CATEGORIES");
-		const allCategories = await prisma.category.findMany({});
-		const formatted = allCategories.map(cat => ({
-			...cat,
-			_id: cat.id // Mongoose compatibility
-		}));
+		const allCategories = await prisma.category.findMany({
+			include: {
+				courses: {
+					where: { status: "Published" }
+				}
+			}
+		});
 		res.status(200).json({
 			success: true,
-			data: formatted,
+			data: allCategories.map(cat => formatCatalogCategory(cat)),
 		});
 	} catch (error) {
 		return res.status(500).json({

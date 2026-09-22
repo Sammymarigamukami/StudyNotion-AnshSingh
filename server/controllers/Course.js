@@ -75,12 +75,18 @@ exports.createCourse = async (req, res) => {
 			instructions: _instructions,
 		} = req.body;
 		
-		// Get thumbnail image from request files
-		const thumbnail = req.files.thumbnailImage;
+		// Get thumbnail image from request files safely
+		const thumbnail = req.files ? req.files.thumbnailImage : null;
 
-		// Convert the tag and instructions from stringified Array to Array
-		const tag = JSON.parse(_tag);
-		const instructions = JSON.parse(_instructions);
+		// Convert the tag and instructions safely
+		let tag = [];
+		let instructions = [];
+		try {
+			tag = typeof _tag === "string" ? JSON.parse(_tag) : (_tag || []);
+			instructions = typeof _instructions === "string" ? JSON.parse(_instructions) : (_instructions || []);
+		} catch (e) {
+			console.error("Tag/instructions parse error:", e);
+		}
 
 		console.log("tag", tag);
 		console.log("instructions", instructions);
@@ -149,7 +155,8 @@ exports.createCourse = async (req, res) => {
 				thumbnail: thumbnailImage.secure_url,
 				status: status,
 				instructions,
-			}
+			},
+			include: courseIncludeBlock
 		});
 
 		// Note: The User and Category relations are automatically fully established via 
@@ -157,7 +164,7 @@ exports.createCourse = async (req, res) => {
 
 		return res.status(200).json({
 			success: true,
-			data: newCourse,
+			data: formatCourseDetails(newCourse),
 			message: "Course Created Successfully",
 		});
 	} catch (error) {

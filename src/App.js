@@ -41,8 +41,14 @@ function App() {
   const { user } = useSelector((state) => state.profile)
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = JSON.parse(localStorage.getItem("token"))
+    const rawToken = localStorage.getItem("token")
+    if (rawToken) {
+      let token = rawToken
+      try {
+        token = JSON.parse(rawToken)
+      } catch (error) {
+        // Fall back to using raw string token
+      }
       dispatch(getUserDetails(token, navigate))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

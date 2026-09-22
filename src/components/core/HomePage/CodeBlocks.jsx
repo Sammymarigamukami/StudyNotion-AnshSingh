@@ -5,13 +5,13 @@ import {FaArrowRight} from "react-icons/fa"
 import { TypeAnimation } from 'react-type-animation'
 
 const CodeBlocks = ({
-    position, heading, subheading, ctabtn1, ctabtn2, codeblock, backgroudGradient, codeColor
+    position, heading, subheading, ctabtn1, ctabtn2, codeblock, backgroundGradient, codeColor
 }) => {
   return (
-    <div className={`flex ${position} my-20 justify-between gap-10`}>
+    <div className={`flex ${position} my-20 justify-between flex-col lg:flex-row gap-10`}>
       
     {/*Section 1*/}
-    <div className='w-[50%] flex flex-col gap-8'>
+    <div className='w-[100%] lg:w-[50%] flex flex-col gap-8'>
         {heading}
         <div className='text-richblack-300 font-bold '>
             {subheading}
@@ -34,10 +34,11 @@ const CodeBlocks = ({
     </div>
 
      {/*Section 2*/}
-     <div className=' h-fit  flex flex-row text-10[px] w-[100%] py-4 lg:w-[500px]'> 
-        {/*HW -> BG gradient*/}
+     <div className='relative h-fit flex flex-row text-[13px] leading-[22px] w-[100%] py-4 lg:w-[500px] border border-richblack-800 bg-richblack-900/30 backdrop-blur-md rounded-2xl shadow-xl p-4'> 
+        {/* Glow BG gradient */}
+        {backgroundGradient}
 
-        <div className='text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold'>
+        <div className='text-center flex flex-col w-[10%] select-none text-richblack-400 font-inter font-bold'>
             <p>1</p>
             <p>2</p>
             <p>3</p>

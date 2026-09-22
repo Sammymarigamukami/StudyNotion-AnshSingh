@@ -1,3 +1,4 @@
+require("./dnsResolver");
 const { PrismaClient } = require("@prisma/client");
 const { PrismaPg } = require("@prisma/adapter-pg");
 const { Pool } = require("pg");
